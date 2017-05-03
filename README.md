@@ -232,7 +232,7 @@ $ ext-ip -h
     -V, --version         output the version number
     -R, --replace         replace internal services instead of extending them
     -a, --userAgent <ua>  set user agent for requests
-    -f, --follow          follow 3xx http redirects
+    -F, --follow          follow 3xx http redirects
     -s, --services <url>  service url, see examples, required if using -R
     -t, --timeout <msec>  set timeout per request
     -P, --parallel        set to parallel mode
