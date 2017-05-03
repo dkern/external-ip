@@ -3,6 +3,7 @@
 [![GitHub version](https://badge.fury.io/gh/eisbehr-%2Fexternal-ip.svg)](https://github.com/eisbehr-/external-ip)
 [![NPM version](https://badge.fury.io/js/ext-ip.svg)](https://www.npmjs.org/package/ext-ip)
 [![Build Status](https://travis-ci.org/eisbehr-/external-ip.svg)](https://travis-ci.org/eisbehr-/external-ip)
+[![Coverage Status](https://coveralls.io/repos/github/eisbehr-/external-ip/badge.svg)](https://coveralls.io/github/eisbehr-/external-ip)
 [![Dependency Status](https://david-dm.org/eisbehr-/external-ip.svg)](https://david-dm.org/eisbehr-/external-ip)
 [![devDependencies Status](https://david-dm.org/eisbehr-/external-ip/dev-status.svg)](https://david-dm.org/eisbehr-/external-ip?type=dev)
 
