@@ -1,3 +1,5 @@
+"use strict";
+
 // set custom configuration options for this instance
 let extIP = require("../index")({
     replace: true,

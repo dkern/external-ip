@@ -1,3 +1,5 @@
+"use strict";
+
 let extIP = require("../index")();
 
 extIP.on("ip", ip => {

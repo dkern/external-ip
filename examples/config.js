@@ -1,3 +1,5 @@
+"use strict";
+
 let extIP = require("../index")({
     mode: "parallel",
     replace: true,
