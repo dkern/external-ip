@@ -1,46 +1,61 @@
 {
-  "name": "external-ip",
-  "version": "0.2.4",
-  "description": "A node.js library to get your external ip from multiple services",
-  "main": "index.js",
-  "scripts": {
-    "test": "node node_modules/mocha/bin/mocha"
-  },
-  "bin": {
-    "external-ip": "lib/cli.js"
-  },
+  "name": "ext-ip",
+  "version": "0.3.2",
+  "title": "Node.js external IP receiver",
+  "description": "A node.js library to get your external ip from multiple services.",
+  "licenses": [{
+    "type": "ISC",
+    "url": "https://opensource.org/licenses/ISC"
+  }],
+  "homepage": "https://github.com/eisbehr-/external-ip",
+  "bugs": "https://github.com/eisbehr-/external-ip/issues",
   "repository": {
     "type": "git",
-    "url": "https://J-Chaniotis@github.com/J-Chaniotis/external-ip.git"
+    "url": "https://eisbehr-@github.com/eisbehr-/external-ip.git"
   },
+  "main": "index.js",
+  "bin": {
+    "ext-ip": "lib/cli/ext-ip.js"
+  },
+  "author": {
+    "name": "Daniel 'Eisbehr' Kern",
+    "email": "git@eisbehr.de",
+    "url": "http://www.eisbehr.de"
+  },
+  "contributors": [{
+      "name": "John Chaniotis"
+    }, {
+      "name": "Nikolas Andronopoulos",
+      "email": "nikolas.andronopoulos@gmail.com"
+    }
+  ],
   "keywords": [
-    "Node.js",
+    "node.js",
     "external",
     "ip",
     "network",
     "public",
     "address"
   ],
-  "author": "J.Chaniotis",
-  "contributors": [
-    {
-      "name": "Nikolas Andronopoulos",
-      "email": "nikolas.andronopoulos@gmail.com"
-    }
-  ],
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/J-Chaniotis/external-ip/issues"
+  "scripts": {
+    "test": "istanbul cover node_modules/mocha/bin/_mocha"
   },
-  "homepage": "https://github.com/J-Chaniotis/external-ip",
   "dependencies": {
     "commander": "^2.9.0",
-    "evented-async-loop": "^0.1.1",
-    "request": "^2.40.0",
-    "revalidator": "^0.3.1"
+    "request": "^2.81.0"
   },
   "devDependencies": {
-    "chai": "^3.4.0",
-    "mocha": "^2.3.3"
+    "chai": "^3.5.0",
+    "chai-as-promised": "^6.0.0",
+    "gulp": "^3.9.1",
+    "gulp-jshint": "^2.0.4",
+    "istanbul": "^0.4.5",
+    "jshint": "^2.9.4",
+    "jshint-stylish": "^2.2.1",
+    "mocha": "^3.3.0",
+    "sinon": "^2.2.0"
+  },
+  "engines": {
+    "node": ">=4"
   }
 }
