@@ -261,9 +261,14 @@ $ gulp validate
 ## Tests
 Tests can be executed in the root directory.
 It uses `mocha`, `chai` and `sinon` to run those.
-Code coverage tool `istanbul` is used for in-deep details about testing.
-These details can be found in `coverage/` folder after execution.
 
 ```SH
 $ npm test
+```
+
+For code coverage `istanbul` is used.
+In-deep details about testing can be found in `coverage/` folder after execution.
+
+```SH
+$ npm run cover
 ```
