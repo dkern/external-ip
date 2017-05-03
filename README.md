@@ -1,97 +1,268 @@
-#external-ip [![Build Status](https://travis-ci.org/J-Chaniotis/external-ip.svg?branch=master)](https://travis-ci.org/J-Chaniotis/external-ip) [![Dependency Status](https://david-dm.org/j-Chaniotis/external-ip.svg)](https://david-dm.org/j-Chaniotis/external-ip)
+# ext-ip
 
-![XKCD 865](http://imgs.xkcd.com/comics/nanobots.png)
+[![GitHub version](https://badge.fury.io/gh/eisbehr-%2Fexternal-ip.svg)](https://github.com/eisbehr-/external-ip)
+[![NPM version](https://badge.fury.io/js/ext-ip.svg)](https://www.npmjs.org/package/ext-ip)
+[![Build Status](https://travis-ci.org/eisbehr-/external-ip.svg)](https://travis-ci.org/eisbehr-/external-ip)
+[![Dependency Status](https://david-dm.org/eisbehr-/external-ip.svg)](https://david-dm.org/eisbehr-/external-ip)
+[![devDependencies Status](https://david-dm.org/eisbehr-/external-ip/dev-status.svg)](https://david-dm.org/eisbehr-/external-ip?type=dev)
+
+`ext-ip` is a node.js library to get your external IP from multiple services.
+It's the successor of the meanwhile unmaintained `external-ip` module.
+
+---
+
+### Table of Contents
+* [Why a fork?](#why-a-fork)
+* [Installation](#installation)
+* [Basic Usage](#basic-usage)
+  * [Ready to Use](#ready-to-use)
+  * [Configure Instance](#configure-Instance)
+* [Response Handling](#response-handling)
+  * [Promises and `.get()` Function](#promises-and-get-function)
+  * [Events](#events)
+  * [Callback](#callback)
+  * [Combine all Response Handlers](#combine-all-response-handlers)
+* [Configuration](#configuration)
+* [Command Line](#)
+* [Code Validation](#code-validation)
+* [Tests](#tests)
+
+---
+
+## Why a fork?
+This project is a fork from the original [`j-chaniotis/external-ip`](https://github.com/J-Chaniotis/external-ip).
+But this was unmaintained a long time, was very old-fashioned and had some code issues.
+So there is a update now, featuring some changes ...
+
+- Completely rewritten in ECMAScript 6 / ES6
+- Nearly completely event driven
+- Now supports `events` and `promieses` beside the old `callback`
+- Added and extended features all over
+- Uses more natively ways where possible
+- Way more request options
+- Uses real Errors for failure handling
+- Fully tested with 100% code coverage!
+- Has only half the dependencies as before
+- Fixed all Issues and added all pull requests of the original repo
+- But still fully compatible to the original ...
 
 
+## Installation
+The module can be installed by `npm`:
 
-`external-ip` is a node.js library to get your external ip from multiple services. 
+```SH
+$ npm install ext-ip
+```
 
 
+## Basic Usage
+Usage of this module is pretty straight forward.
+Just import `ext-ip` module and call constructor function.
+Afterwards it's possible to gather the external IP as often as wanted.
 
-##Installation
 
-`npm install external-ip`
+### Ready to Use
+The module is completely configured by default and ready to gather the external IP address.
 
-##Usage
+```JS
+let extIP = require("ext-ip")();
 
-basic
+extIP.get().then(ip => {
+    console.log(ip);
+}, err => {
+    console.error(err);
+});
+```
 
-```javascript
-'use strict';
 
-var getIP = require('external-ip')();
+### Configure Instance
+Each instance of `ext-ip` can be configured with custom options.
+More details about the parameter can be found in [configuration description](#configuration).
 
-getIP(function (err, ip) {
-    if (err) {
-        // every service in the list has failed
-        throw err;
-    }
+```JS
+let extIP = require("ext-ip")({
+    mode           : "parallel",
+    replace        : true,
+    timeout        : 500,
+    agent          : http.Agent,
+    userAgent      : "curl/ext-ip-getter",
+    followRedirect : true,
+    maxRedirects   : 10,
+    services       : [
+        "http://ifconfig.co/x-real-ip",
+        "http://ifconfig.io/ip"
+    ]
+});
+
+extIP.get().then(ip => {
+    console.log(ip);
+});
+```
+
+
+## Response Handling
+There are three different ways to handle any response:
+`promises`, `events` or an old-school `callback` function.
+An example for each type is listed below.
+
+
+### Promises and `.get()` Function
+Using a `promise` for response handling possible too.
+The `.get()` function is just a wrapper of `extIP`.
+Its used to prevent _unhandled promise rejection_ warning on normal use of this module.
+Whenever wanted to use `promises` the `.get()` wrapper should be picked!
+
+A `promise` is even returned by `extIP` function and is fully supported.
+Only difference is, that on `rejection` the `err` variable only contains a `string` instead of an `Error` object.  
+
+The usage of `.get()` will even fix some problems recognizing the response type of module exports in IntelliJ IDEs.
+So using this function will prevent you from automatically code completion highlights, but it will work even without.
+
+```JS
+let extIP = require("ext-ip")();
+
+extIP.get().then(ip => {
+    console.log(ip);
+})
+.catch(err => {
+    console.error(err);
+});
+```
+
+
+### Events
+There are two event types used by this module: `ip` and `err`.
+Both will have one parameter given to the listener function when event is triggered.
+
+```JS
+let extIP = require("ext-ip")();
+
+extIP.on("ip", ip => {
     console.log(ip);
 });
 
-```
-
-with configuration
-
-```javascript
-'use strict';
-
-var extIP = require('external-ip');
-
-var getIP = extIP({
-    replace: true,
-    services: ['http://ifconfig.co/x-real-ip', 'http://ifconfig.io/ip'],
-    timeout: 600,
-    getIP: 'parallel'
+extIP.on("err", err => {
+    console.error(err);
 });
 
-getIP(function (err, ip) {
-    if (err) {
+extIP();
+```
+
+
+### Callback
+The callback has up to two prarameters on execution: `err` (_instance of Error_) and `ip` (_string_).
+Whenever the first one is not `null`, there has been at least one error while execution.
+
+```JS
+let extIP = require("ext-ip")();
+
+extIP((err, ip) => {
+    if( err ){
         throw err;
     }
+
     console.log(ip);
 });
-
 ```
-##extIP([config])
-external-ip exposes a constructor function that accepts a configuration object with the following optional properties:
-* **services:** `Array` of urls that return the ip in the html body, required if replace is set to true
-* **replace:** `Boolean` if true, replaces the internal array of services with the user defined, if false, extends it, default: `false` 
-* **timeout:** Timeout per request in ms, default `1000`
-* **getIP:** `'sequential'` Sends a request to the first url in the list, if that fails sends to the next and so on. `'parallel'` Sends requests to all the sites in the list, on the first valid response all the pending requests are canceled. default: `'sequential'`
 
-Returns the configured getIP function.
 
-##getIP(callback)
-The callback gets 2 arguments:
-1. error: if every service in the list fails to return a valid ip
-2. ip: your external ip
+### Combine all Response Handlers
+It's no problem to combine every response handlers in one instance too:
 
-##CLI
-install as a global package with `npm install -g external-ip`.
+```JS
+let extIP = require("ext-ip")();
+
+// events
+extIP.on("ip", ip => {
+    console.log("event ip: " + ip);
+});
+
+extIP.on("err", err => {
+    console.error("event error: " + err);
+});
+
+// callback
+extIP.get((err, ip) => {
+    if( err ) {
+        console.error("callback error: " + err);
+    }
+    else {
+        console.log("callback ip: " + ip);
+    }
+})
+
+// promise
+.then(ip => {
+    console.log("promise ip: " + ip);
+})
+.catch(err => {
+    console.error("promise error: " + err);
+});
 ```
-$ external-ip -h
 
-  Usage: external-ip [options]
+
+## Configuration
+The constructor function accepts a configuration object with different options to customize each instance.
+
+Name           | Type          | Default        | Description
+---------------|---------------|----------------|-------------
+mode           | *string*      | *"sequential"* | 'sequential' or 'parallel' IP fetching
+replace        | *boolean*     | *false*        | true: replaces the default services, false: extends them
+services       | *array*       | *[...]*        | array of urls that return the IP in the document body
+timeout        | *number*      | *1000*         | timeout per request
+agent          | *constructor* | *null*         | http(s).Agent instance to use
+userAgent      | *string*      | *"curl/"*      | user agent used for IP requests
+followRedirect | *boolean*     | *true*         | follow htt 3xx responses as redirects
+maxRedirects   | *number*      | *10*           | maximum redirect count
+
+
+## Command Line
+The `ext-ip` command is available via command line or `CLI`.
+Copy of the help info text:
+
+```SH
+$ ext-ip -h
+
+  Usage: ext-ip [options]
 
   Options:
 
     -h, --help            output usage information
-    -R, --replace         replace internal services instead of extending them.
-    -s, --services <url>  service url, see examples, required if using -R 
+    -V, --version         output the version number
+    -R, --replace         replace internal services instead of extending them
+    -a, --userAgent <ua>  set user agent for requests
+    -f, --follow          follow 3xx http redirects
+    -s, --services <url>  service url, see examples, required if using -R
     -t, --timeout <msec>  set timeout per request
     -P, --parallel        set to parallel mode
 
-This program prints the external IP of the machine.
-All arguments are optional.
-Examples:
-$ external-ip
-$ external-ip -P -t 1500 -R -s http://icanhazip.com/ -s http://ifconfig.io/ip
-```
-##Test
-Change your working directory to the project's root, `npm install` to get the development dependencies and then run `npm test`
+  Description:
 
-##Links
-* [moira](https://www.npmjs.org/package/moira)
-* [externalip](https://www.npmjs.org/package/externalip)
-* [extip](https://www.npmjs.org/package/extip)
+    This program prints the external IP of the machine.
+    All arguments are optional.
+
+  Examples:
+
+    $ ext-ip
+    $ ext-ip -P -t 1500 -R -s http://icanhazip.com -s http://ifconfig.io/ip
+```
+
+
+## Code Validation
+This project uses `jshint` to validate the basic coding style and to prevent some basic design problems.
+A validation can be executed at any time with `gulp`.
+
+```SH
+$ gulp validate
+```
+
+
+## Tests
+Tests can be executed in the root directory.
+It uses `mocha`, `chai` and `sinon` to run those.
+Code coverage tool `istanbul` is used for in-deep details about testing.
+These details can be found in `coverage/` folder after execution.
+
+```SH
+$ npm test
+```
