@@ -31,7 +31,7 @@ It's the successor of the meanwhile unmaintained `external-ip` module.
 
 ## Why a fork?
 This project is a fork from the original [`j-chaniotis/external-ip`](https://github.com/J-Chaniotis/external-ip).
-But this was unmaintained a long time, was very old-fashioned and had some code issues.
+But this was unmaintained for a long time, was very old-fashioned and had some code issues.
 So there is a update now, featuring some changes ...
 
 - Completely rewritten in ECMAScript 6 / ES6
@@ -39,16 +39,16 @@ So there is a update now, featuring some changes ...
 - Now supports `events` and `promieses` beside the old `callback`
 - Added and extended features all over
 - Uses more natively ways where possible
-- Way more request options
-- Uses real Errors for failure handling
-- Fully tested with 100% code coverage!
+- Way more custom request options
+- Uses real Errors instead of plain text for failure handling
+- Fully tested with 100% code coverage
 - Has only half the dependencies as before
-- Fixed all Issues and added all pull requests of the original repo
-- But still fully compatible to the original ...
+- Fixed all Issues and added all pull requests of the original repository
+- But is still fully compatible to the original ...
 
 
 ## Installation
-The module can be installed by `npm`:
+The module can be easily installed by `npm`:
 
 ```SH
 $ npm install ext-ip
@@ -77,7 +77,7 @@ extIP.get().then(ip => {
 
 ### Configure Instance
 Each instance of `ext-ip` can be configured with custom options.
-More details about the parameter can be found in [configuration description](#configuration).
+More details about the parameters can be found in [configuration description](#configuration).
 
 ```JS
 let extIP = require("ext-ip")({
@@ -107,8 +107,8 @@ An example for each type is listed below.
 
 
 ### Promises and `.get()` Function
-Using a `promise` for response handling possible too.
-The `.get()` function is just a wrapper of `extIP`.
+Using a `promise` for response handling is directly possible.
+But best practice is to use the `.get()` function then, what is just a wrapper of `extIP`.
 Its used to prevent _unhandled promise rejection_ warning on normal use of this module.
 Whenever wanted to use `promises` the `.get()` wrapper should be picked!
 
@@ -220,7 +220,7 @@ maxRedirects   | *number*      | *10*           | maximum redirect count
 The `ext-ip` command is available via command line or `CLI`.
 Copy of the help info text:
 
-```SH
+```TEXT
 $ ext-ip -h
 
   Usage: ext-ip [options]
