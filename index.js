@@ -1,2 +1,1 @@
-'use strict';
-module.exports = require('./lib/extIP');
+module.exports = require("./lib/extIP");
