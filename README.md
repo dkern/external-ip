@@ -16,7 +16,7 @@ It's the successor of the meanwhile unmaintained `external-ip` module.
 * [Installation](#installation)
 * [Basic Usage](#basic-usage)
   * [Ready to Use](#ready-to-use)
-  * [Configure Instance](#configure-Instance)
+  * [Configure Instance](#configure-instance)
 * [Response Handling](#response-handling)
   * [Promises and `.get()` Function](#promises-and-get-function)
   * [Events](#events)
