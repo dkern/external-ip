@@ -1,3 +1,5 @@
+"use strict";
+
 let chai = require("chai");
 let sinon = require("sinon");
 chai.should();
@@ -34,7 +36,10 @@ describe("errors", () => {
         getIP.get().then(ip => {
             console.log("ip: " + ip);
         }, err => {
-            err.message.should.be.equal("ETIMEDOUT (http://google.com)");
+            err.message.should.be.oneOf([
+                "ETIMEDOUT (http://google.com)",
+                "ESOCKETTIMEDOUT (http://google.com)"
+            ]);
             done();
         });
     });
@@ -95,7 +100,12 @@ describe("errors", () => {
         });
 
         getIP.get().catch(err => {
-            err.message.should.be.equal("ETIMEDOUT (http://google.com)\nETIMEDOUT (http://google.com)");
+            err.message.should.be.oneOf([
+                "ETIMEDOUT (http://google.com)\nETIMEDOUT (http://google.com)",
+                "ESOCKETTIMEDOUT (http://google.com)\nETIMEDOUT (http://google.com)",
+                "ETIMEDOUT (http://google.com)\nESOCKETTIMEDOUT (http://google.com)",
+                "ESOCKETTIMEDOUT (http://google.com)\nESOCKETTIMEDOUT (http://google.com)"
+            ]);
             done();
         });
     });
@@ -111,7 +121,12 @@ describe("errors", () => {
         });
 
         getIP.get().catch(err => {
-            err.message.should.be.equal("ETIMEDOUT (http://google.com)\nETIMEDOUT (http://google.com)");
+            err.message.should.be.oneOf([
+                "ETIMEDOUT (http://google.com)\nETIMEDOUT (http://google.com)",
+                "ESOCKETTIMEDOUT (http://google.com)\nETIMEDOUT (http://google.com)",
+                "ETIMEDOUT (http://google.com)\nESOCKETTIMEDOUT (http://google.com)",
+                "ESOCKETTIMEDOUT (http://google.com)\nESOCKETTIMEDOUT (http://google.com)"
+            ]);
             done();
         });
     });
