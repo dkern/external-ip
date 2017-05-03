@@ -46,6 +46,7 @@ describe("errors", () => {
 
     it("should have correct unknown host message", function(done) { // use function for 'this'
         this.slow(6000);
+        this.timeout(6500);
 
         let getIP = extIP({
             replace  : true,
@@ -61,6 +62,7 @@ describe("errors", () => {
 
     it("should have invalid response message on sequential", function(done) { // use function for 'this'
         this.slow(6000);
+        this.timeout(6500);
 
         let getIP = extIP({
             replace  : true,
@@ -76,6 +78,7 @@ describe("errors", () => {
 
     it("should have invalid response message on parallel", function(done) { // use function for 'this'
         this.slow(6000);
+        this.timeout(6500);
 
         let getIP = extIP({
             mode     : "parallel",
@@ -92,6 +95,7 @@ describe("errors", () => {
 
     it("should have timeout response messages on sequential", function(done) { // use function for 'this'
         this.slow(6000);
+        this.timeout(6500);
 
         let getIP = extIP({
             replace  : true,
@@ -112,6 +116,7 @@ describe("errors", () => {
 
     it("should have timeout response messages on parallel", function(done) { // use function for 'this'
         this.slow(6000);
+        this.timeout(6500);
 
         let getIP = extIP({
             mode     : "parallel",

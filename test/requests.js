@@ -56,6 +56,20 @@ describe("requests.js", () => {
         });
     });
 
+    it("should reject with even with string error in body request", done => {
+        let request = {
+            get: (opts, cb) => {
+                cb("test");
+            }
+        };
+
+        requests.requestBody(request, {timeout: 100}, "test").catch(err => {
+            err.should.be.a("string");
+            err.should.be.equal("test");
+            done();
+        });
+    });
+
     it("should reject with an error in factory", done => {
         requests.factory({}, "")().catch(err => {
             err.should.be.a("string");

@@ -22,7 +22,7 @@ describe("index.js", () => {
 
     it("should return an IP with default configuration", function(done) { // use function for 'this'
         this.slow(timeout * 2);
-        this.timeout(timeout);
+        this.timeout(timeout * 2 + 500);
 
         let getIP = extIP();
 
@@ -35,7 +35,7 @@ describe("index.js", () => {
 
     it("should return an IP with callback", function(done) { // use function for 'this'
         this.slow(timeout * 2);
-        this.timeout(timeout);
+        this.timeout(timeout * 2 + 500);
 
         let getIP = extIP({
             mode: "parallel",
@@ -51,7 +51,7 @@ describe("index.js", () => {
 
     it("should return an IP with events", function(done) { // use function for 'this'
         this.slow(timeout * 2);
-        this.timeout(timeout);
+        this.timeout(timeout * 2 + 500);
 
         let getIP = extIP({
             mode: "parallel",
@@ -68,7 +68,7 @@ describe("index.js", () => {
 
     it("should return an IP with promise", function() { // use function for 'this'
         this.slow(timeout * 2);
-        this.timeout(timeout);
+        this.timeout(timeout * 2 + 500);
 
         let getIP = extIP({
             mode: "parallel",
@@ -82,7 +82,7 @@ describe("index.js", () => {
 
     it("should return an IP with custom configuration", function() { // use function for 'this'
         this.slow(timeout * 2);
-        this.timeout(timeout);
+        this.timeout(timeout * 2 + 500);
 
         let getIP = extIP({
             mode     : "parallel",
