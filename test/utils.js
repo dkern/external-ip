@@ -168,6 +168,52 @@ describe("utils.js", () => {
         });
     });
 
+    it("should extend services", () => {
+        let configDefault = {
+            replace        : false,
+            services       : ["text"],
+            timeout        : 500,
+            mode           : "sequential",
+            agent          : null,
+            userAgent      : "curl/",
+            followRedirect : true,
+            maxRedirects   : 10
+        };
+
+        let configA = {
+            replace        : true,
+            services       : ["text"]
+        };
+
+        let configB = {
+            services       : ["text"]
+        };
+
+        let merged = utils.mergeConfig(configA, configDefault);
+        merged.should.be.deep.equal({
+            replace        : true,
+            services       : ["text"],
+            timeout        : 500,
+            mode           : "sequential",
+            agent          : null,
+            userAgent      : "curl/",
+            followRedirect : true,
+            maxRedirects   : 10
+        });
+
+        merged = utils.mergeConfig(configB, configDefault);
+        merged.should.be.deep.equal({
+            replace        : false,
+            services       : ["text", "text"],
+            timeout        : 500,
+            mode           : "sequential",
+            agent          : null,
+            userAgent      : "curl/",
+            followRedirect : true,
+            maxRedirects   : 10
+        });
+    });
+
     it("should race resolve correctly", () => {
         let promises = [
             new Promise((resolve, reject) => {
