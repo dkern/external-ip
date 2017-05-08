@@ -31,9 +31,9 @@ It's the successor of the meanwhile unmaintained `external-ip` module.
 ---
 
 ## Why a fork?
-This project is a fork from the original [`j-chaniotis/external-ip`](https://github.com/J-Chaniotis/external-ip).
-But this was unmaintained for a long time, was very old-fashioned and had some code issues.
-So there is a update now, featuring some changes ...
+This project is a fork from the original [`external-ip`](https://github.com/J-Chaniotis/external-ip) module.
+But this was unmaintained for a long time, was very old-fashioned and had some code issues as well.
+So there is a update now, featuring some improvements ...
 
 - Completely rewritten in ECMAScript 6 / ES6
 - Nearly completely event driven
@@ -49,7 +49,7 @@ So there is a update now, featuring some changes ...
 
 
 ## Installation
-The module can be easily installed by `npm`:
+The module can be easily installed by [`npm`](https://www.npmjs.com/package/ext-ip):
 
 ```SH
 $ npm install ext-ip
@@ -215,6 +215,25 @@ agent          | *constructor* | *null*         | http(s).Agent instance to use
 userAgent      | *string*      | *"curl/"*      | user agent used for IP requests
 followRedirect | *boolean*     | *true*         | follow htt 3xx responses as redirects
 maxRedirects   | *number*      | *10*           | maximum redirect count
+
+
+### Default Services
+Below list is showing all default configured services in given order, used by this module.
+This is the default of the `services` configuration parameter.
+
+```TEXT
+http://icanhazip.com/
+http://ifconfig.io/ip
+http://ip.appspot.com/
+http://ident.me/
+http://whatismyip.akamai.com/
+http://tnx.nl/ip
+http://myip.dnsomatic.com/
+http://ipecho.net/plain
+http://diagnostic.opendns.com/myip
+http://api.ipify.org/
+http://trackip.net/ip"
+```
 
 
 ## Command Line
