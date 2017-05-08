@@ -171,7 +171,7 @@ describe("utils.js", () => {
     it("should extend services", () => {
         let configDefault = {
             replace        : false,
-            services       : ["text"],
+            services       : ["test"],
             timeout        : 500,
             mode           : "sequential",
             agent          : null,
@@ -182,17 +182,17 @@ describe("utils.js", () => {
 
         let configA = {
             replace        : true,
-            services       : ["text"]
+            services       : ["test"]
         };
 
         let configB = {
-            services       : ["text"]
+            services       : ["test"]
         };
 
         let merged = utils.mergeConfig(configA, configDefault);
         merged.should.be.deep.equal({
             replace        : true,
-            services       : ["text"],
+            services       : ["test"],
             timeout        : 500,
             mode           : "sequential",
             agent          : null,
@@ -204,7 +204,7 @@ describe("utils.js", () => {
         merged = utils.mergeConfig(configB, configDefault);
         merged.should.be.deep.equal({
             replace        : false,
-            services       : ["text", "text"],
+            services       : ["test", "test"],
             timeout        : 500,
             mode           : "sequential",
             agent          : null,
