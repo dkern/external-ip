@@ -1,6 +1,6 @@
 {
   "name": "ext-ip",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "title": "Node.js external IP receiver",
   "description": "A node.js library to get your external ip from multiple services.",
   "licenses": [{
