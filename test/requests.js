@@ -2,6 +2,7 @@
 
 let chai = require("chai");
 let cap = require("chai-as-promised");
+let expect = chai.expect;
 
 chai.use(cap);
 chai.should();
@@ -33,11 +34,26 @@ describe("requests.js", () => {
                 opts.timeout.should.be.equal(100);
                 opts.headers.should.be.deep.equal({"User-Agent": "test"});
 
+                expect(opts.agent).to.be.undefined;
+
                 cb(null, null, "test");
             }
         };
 
         return requests.requestBody(request, {timeout: 100, userAgent: "test"}, "test").then(body => {
+            body.should.be.equal("test");
+        });
+    });
+
+    it("should the an agent instance to request module", () => {
+        let request = {
+            get: (opts, cb) => {
+                opts.agent.should.be.equal("test");
+                cb(null, null, "test");
+            }
+        };
+
+        return requests.requestBody(request, {agent: "test"}, "test").then(body => {
             body.should.be.equal("test");
         });
     });
