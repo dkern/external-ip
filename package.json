@@ -40,7 +40,7 @@
   "scripts": {
     "test": "nyc --reporter=none mocha",
     "cover": "nyc --reporter=html mocha",
-    "coverage": "nyc report --reporter=text-lcov | coveralls"
+    "coveralls": "nyc report --reporter=text-lcov | coveralls"
   },
   "dependencies": {
     "commander": "^2.9.0",
