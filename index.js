@@ -1,1 +1,1 @@
-module.exports = require("./lib/extIP");
+module.exports = require("./lib/ext-ip");
