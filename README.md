@@ -28,6 +28,9 @@ It's the successor of the meanwhile unmaintained `external-ip` module.
 * [Command Line](#)
 * [Code Validation](#code-validation)
 * [Tests](#tests)
+* [Bugs / Feature request](#bugs--feature-request)
+* [License](#license)
+* [Donation](#donation)
 
 ---
 
@@ -292,3 +295,19 @@ In-deep details about testing can be found in `coverage/` folder after execution
 ```SH
 $ npm run cover
 ```
+
+
+## Bugs / Feature request
+Please [report](http://github.com/eisbehr-/external-ip/issues) bugs and feel free to [ask](http://github.com/eisbehr-/external-ip/issues) for new features directly on GitHub.
+
+
+## License
+This project is licensed under [ISC](https://opensource.org/licenses/ISC) license.
+
+
+## Donation
+_You like to support me?_  
+_You appreciate my work?_  
+_You use it in commercial projects?_  
+  
+Feel free to make a little [donation](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=FFL6VQJCUZMXC)! :wink:
