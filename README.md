@@ -25,7 +25,7 @@ It's the successor of the meanwhile unmaintained `external-ip` module.
   * [Combine all Response Handlers](#combine-all-response-handlers)
 * [Configuration](#configuration)
   * [Default Services](#default-services)
-* [Command Line](#)
+* [Command Line](#command-line)
 * [Code Validation](#code-validation)
 * [Tests](#tests)
 * [Bugs / Feature request](#bugs--feature-request)
