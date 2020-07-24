@@ -1,17 +1,17 @@
 {
   "name": "ext-ip",
-  "version": "0.3.8",
+  "version": "0.3.9",
   "title": "Node.js external IP receiver",
   "description": "A node.js library to get your external ip from multiple services.",
   "licenses": [{
     "type": "ISC",
     "url": "https://opensource.org/licenses/ISC"
   }],
-  "homepage": "https://github.com/eisbehr-/external-ip",
-  "bugs": "https://github.com/eisbehr-/external-ip/issues",
+  "homepage": "https://github.com/dkern/external-ip",
+  "bugs": "https://github.com/dkern/external-ip/issues",
   "repository": {
     "type": "git",
-    "url": "https://eisbehr-@github.com/eisbehr-/external-ip.git"
+    "url": "https://dkern@github.com/dkern/external-ip.git"
   },
   "main": "index.js",
   "bin": {

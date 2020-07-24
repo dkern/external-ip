@@ -1,11 +1,11 @@
 # ext-ip
 
-[![GitHub version](https://badge.fury.io/gh/eisbehr-%2Fexternal-ip.svg)](https://github.com/eisbehr-/external-ip)
+[![GitHub version](https://badge.fury.io/gh/dkern%2Fexternal-ip.svg)](https://github.com/dkern/external-ip)
 [![NPM version](https://badge.fury.io/js/ext-ip.svg)](https://www.npmjs.org/package/ext-ip)
-[![Build Status](https://travis-ci.org/eisbehr-/external-ip.svg)](https://travis-ci.org/eisbehr-/external-ip)
-[![Coverage Status](https://coveralls.io/repos/github/eisbehr-/external-ip/badge.svg)](https://coveralls.io/github/eisbehr-/external-ip)
-[![Dependency Status](https://david-dm.org/eisbehr-/external-ip.svg)](https://david-dm.org/eisbehr-/external-ip)
-[![devDependencies Status](https://david-dm.org/eisbehr-/external-ip/dev-status.svg)](https://david-dm.org/eisbehr-/external-ip?type=dev)
+[![Build Status](https://travis-ci.org/dkern/external-ip.svg)](https://travis-ci.org/dkern/external-ip)
+[![Coverage Status](https://coveralls.io/repos/github/dkern/external-ip/badge.svg)](https://coveralls.io/github/dkern/external-ip)
+[![Dependency Status](https://david-dm.org/dkern/external-ip.svg)](https://david-dm.org/dkern/external-ip)
+[![devDependencies Status](https://david-dm.org/dkern/external-ip/dev-status.svg)](https://david-dm.org/dkern/external-ip?type=dev)
 
 `ext-ip` is a node.js library to get your external IP from multiple services.
 It's the successor of the meanwhile unmaintained `external-ip` module.
@@ -298,7 +298,7 @@ $ npm run cover
 
 
 ## Bugs / Feature request
-Please [report](http://github.com/eisbehr-/external-ip/issues) bugs and feel free to [ask](http://github.com/eisbehr-/external-ip/issues) for new features directly on GitHub.
+Please [report](http://github.com/dkern/external-ip/issues) bugs and feel free to [ask](http://github.com/dkern/external-ip/issues) for new features directly on GitHub.
 
 
 ## License
