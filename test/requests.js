@@ -95,7 +95,7 @@ describe("requests.js", () => {
 
     it("should return an validate response body correctly to be an ip", () => {
         // noinspection BadExpressionStatementJS, JSUnresolvedVariable
-        requests.validateBody("127.0.0.1").should.be.resolved;
+        requests.validateBody("127.0.0.1").should.be.fulfilled;
         // noinspection BadExpressionStatementJS, JSUnresolvedVariable
         requests.validateBody("localhost").should.be.rejected;
         // noinspection BadExpressionStatementJS, JSUnresolvedVariable
